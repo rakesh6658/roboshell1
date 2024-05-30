@@ -1,4 +1,4 @@
-date=$date(date +%F-%H-%M-%S)
+date=$(date +%F-%H-%M-%S)
 script_name=$0
 location=/tmp
 logfile=$location/$script_name-$date.log
