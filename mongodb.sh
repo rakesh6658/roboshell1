@@ -20,7 +20,7 @@ validate() {
     echo "$2.. success"
     fi
 }
-cp mongo.repo /etc/yum.repos.d/mongo.repo $>> $logfile
+cp /home/centos/roboshell1/mongo.repo /etc/yum.repos.d/mongo.repo $>> $logfile
 validate $? "copying mongo.repo"
 yum install mongodb-org -y $>> $logfile
 validate $? "installing mongodb" 
