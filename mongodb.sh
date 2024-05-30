@@ -10,7 +10,7 @@ N="\e[0m"
 id=$(id -u)
 if [ $id -ne 0 ]
 then
-echo "$R user is not root $N. $G kindly proceed with root access$N"
+echo -e "$R user is not root $N. $G kindly proceed with root access$N"
 exit 1
 fi
-echo " $Y welcome to shell script $N"
+echo  -e " $Y welcome to shell script $N"
