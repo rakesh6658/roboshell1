@@ -20,17 +20,17 @@ validate() {
     echo "$2.. success"
     fi
 }
-cp /home/centos/roboshell1/mongo.repo /etc/yum.repos.d/mongo.repo $>> $logfile
+cp "/home/centos/roboshell1/mongo.repo" "/etc/yum.repos.d/mongo.repo" &>> $logfile
 validate $? "copying mongo.repo"
-yum install mongodb-org -y $>> $logfile
+yum install mongodb-org -y &>> $logfile
 validate $? "installing mongodb" 
-systemctl enable mongod $>> $logfile
+systemctl enable mongod &>> $logfile
 validate $? "enabling mongodb" 
-systemctl start mongod $>> $logfile
+systemctl start mongod &>> $logfile
 validate $? "start mongodb"
-sed -i "s/127.0.0.1/0.0.0.0/g" /etc/mongod.conf $>> $logfile
+sed -i "s/127.0.0.1/0.0.0.0/g" /etc/mongod.conf &>> $logfile
 validate $? "changing ip address mongodb"
-systemctl restart mongod $>> $logfile
+systemctl restart mongod &>> $logfile
 validate $? "restarted mongod"
 
 
