@@ -26,9 +26,9 @@ yum module enable redis:remi-6.2 -y &>> $logfile
 validate $? "enable redis"
 yum install redis -y  &>> $logfile
 validate $? "installing redis"
-sed -i "s/127.0.0.1/0.0.0.0/g" /etc/redis.conf  /etc/redis/redis.conf $logfile
+sed -i "s/127.0.0.1/0.0.0.0/g" /etc/redis.conf  /etc/redis/redis.conf &>> $logfile
 validate $? "changing ip address"
- systemctl enable redis $logfile
- validate $? "enable redis"
- systemctl start redis $logfile
+systemctl enable redis &>> $logfile
+validate $? "enable redis"
+systemctl start redis &>> $logfile
 validate $? "start redis"
