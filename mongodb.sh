@@ -6,9 +6,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-validate(){
-    if [ $1 ]
-}
+
 id=$(id -u)
 if [ $id -ne 0 ]
 then
