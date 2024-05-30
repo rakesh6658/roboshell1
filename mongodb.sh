@@ -6,13 +6,14 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-validate(){
+validate() {
     if [ $1 -ne 0 ]
     then
     echo "$2.. failure"
     else
     echo "$2.. success
-}
+    fi
+    }
 id=$(id -u)
 if [ $id -ne 0 ]
 then
