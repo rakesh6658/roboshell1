@@ -4,7 +4,7 @@ security_groupid=sg-05767c7a9b8ae16b0
 subnetid=subnet-036554fe159737dc4
 
 
-modules=( "mongodb" "redis" "catalogue" "cart" "user" "mysql" "rabbitmq" "shipping" "dispatch" "payment" )
+modules=( "mongodb" "redis" "catalogue" "cart" "user")
 for i in "${modules[@]}"
 do
 if ((i=="mongodb" || i=="mysql"))
@@ -16,6 +16,7 @@ private_ip=$( aws ec2 run-instances  --image-id $imageid  --instance-type $insta
 fi
 done
 # aws route53 change-resource-record-sets --hosted-zone-id Z07861153FFB7P0M0D6G8 --change-batch 
+"mysql" "rabbitmq" "shipping" "dispatch" "payment"
 # {
 #     "Comment": "Update record to add new CNAME record",
 #     "Changes": 
