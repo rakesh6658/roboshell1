@@ -16,18 +16,15 @@ fi
 aws route53 change-resource-record-sets --hosted-zone-id Z07861153FFB7P0M0D6G8 --change-batch
  {
     "Comment": "Update record to add new CNAME record",
-    "Changes": [
+    "Changes": 
+    [
         {
             "Action": "CREATE",
             "ResourceRecordSet": {
                 "Name": "$modules.rakeshreddy.online",
                 "Type": "A",
                 "TTL": 300,
-                "ResourceRecords": [
-                    {
-                    
-                    }
-                ]
+                
             }
         }
     ]
