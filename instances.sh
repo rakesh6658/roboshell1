@@ -5,7 +5,7 @@ subnetid=subnet-036554fe159737dc4
 
 
 modules=( "mongodb" "redis" "catalogue" "cart" "user" "mysql" "rabbitmq" "shipping" "dispatch" "payment" )
-echo $(modules$@)
+echo "${modules[@]}"
 # for i in $modules$@
 # do
 # if ((i=="mongodb" || i=="mysql"))
