@@ -15,24 +15,24 @@ else
 private_ip=$( aws ec2 run-instances  --image-id $imageid  --instance-type $instance_type  --security-group-ids $security_groupid --subnet-id $subnetid | jq -r '.Instances[0].PrivateIpAddress')
 fi
 done
-aws route53 change-resource-record-sets --hosted-zone-id Z07861153FFB7P0M0D6G8 --change-batch 
-{
-    "Comment": "Update record to add new CNAME record",
-    "Changes": 
-    [
-        {
-            "Action": "CREATE",
-            "ResourceRecordSet": {
-                "Name": "${modules[@]}.rakeshreddy.online",
-                "Type": "A",
-                "TTL": "300",
-                "ResourceRecords": [
-                    {
-                        "Value": "$modules"
-                    }
-                ]
-            }
-        }
-    ]
-}
-done
+# aws route53 change-resource-record-sets --hosted-zone-id Z07861153FFB7P0M0D6G8 --change-batch 
+# {
+#     "Comment": "Update record to add new CNAME record",
+#     "Changes": 
+#     [
+#         {
+#             "Action": "CREATE",
+#             "ResourceRecordSet": {
+#                 "Name": "${modules[@]}.rakeshreddy.online",
+#                 "Type": "A",
+#                 "TTL": "300",
+#                 "ResourceRecords": [
+#                     {
+#                         "Value": "$modules"
+#                     }
+#                 ]
+#             }
+#         }
+#     ]
+# }
+# done
