@@ -1,2 +1,17 @@
+18.0.0.0
 [nginx]
 18.212.232.159
+[mongodb]
+10.1.0.0
+[mysql]
+10.2.0.0
+[cart]
+10.9.0.0
+[user]
+10.7.0.0
+[db:children]
+mongodb
+mysql
+[app:children]
+cart
+user
