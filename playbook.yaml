@@ -1,0 +1,6 @@
+name: print message
+hosts: nginx
+tasks:
+name: print message
+ansible.builtin.debug
+  msg: "welcome to hyd"
