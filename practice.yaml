@@ -1,0 +1,20 @@
+- name: rakesh
+  number: 9441663452
+  company: newgen
+  father_name: narasimha reddy
+  mother_name: santha
+- current_address:
+    door_no: 123-123
+    village: gotlur
+    mandal: dharmavaram
+    district: anantapur
+    pincode: 515672
+- permanent_address:
+    door_no: 123-123
+    village: gotlur
+    mandal: dharmavaram
+    district: anantapur
+    pincode: 515672
+    
+
+
