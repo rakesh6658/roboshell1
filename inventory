@@ -2,7 +2,7 @@
 [nginx]
 54.226.250.151
 [nginx:vars]
-name=inventory-vars
+name1=inventory-vars
 house=gotlur
 [mongodb]
 10.1.0.0

@@ -7,15 +7,15 @@
       private: true
 
   vars:
-    name: play-vars-rakesh
+    name1: play-vars-rakesh
     house: gotlur
   vars_files:
     - variables.yaml  
   tasks:
   - name: printing the vars
     vars:
-      name: task-vars-dubbu
+      name1: task-vars-dubbu
       house: sweden
     ansible.builtin.debug:
-      msg: "welcome to {{name}},he lives in {{house}} and he knows {{name}} {{name1}}"  
+      msg: "welcome to {{name1}},he lives in {{house}} and he knows {{name1}} "  
 
