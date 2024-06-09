@@ -1,0 +1,10 @@
+- name: 6 types of vars
+  hosts: nginx
+  vars:
+    name: rakesh
+    house: gotlur
+  tasks:
+  - name: printing the vars
+    ansible.builtin.debug:
+      msg: "welcome to {{name}},he lives in {{house}}"  
+
