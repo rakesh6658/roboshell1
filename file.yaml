@@ -11,7 +11,7 @@
       msg: "mouli directory exists"
     when: output.stat.exists
   - name: directory exists
-    ansible.builtin.debug:
+    ansible.builtin.command: mkdir mouli
       msg: "mouli directory not exists"
     when: not output.stat.exists  
 
