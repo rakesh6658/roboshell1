@@ -1,6 +1,6 @@
 18.0.0.0
 [nginx]
-54.226.250.151
+18.234.223.86
 [nginx:vars]
 name1=inventory-vars
 house=gotlur
