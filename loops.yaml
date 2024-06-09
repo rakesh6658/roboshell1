@@ -4,8 +4,8 @@
   tasks:
   - name: installing nginx and postfix
     ansible.builtin.yum:
-      name: "{{ item }}"
-      state: installed
+      name: "{{ item.name }}"
+      state: "{{ item.state }}"
     loop:
-    - nginx
-    - ansible  
+    - { name: 'nginx', state: 'started' }
+    - { name: 'ansible', state: 'stopped'}
