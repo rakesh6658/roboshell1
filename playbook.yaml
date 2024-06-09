@@ -1,5 +1,5 @@
 - name: print message
-  localhost: nginx
+  hosts: localhost
   tasks:
   - name: print message
     ansible.builtin.debug
