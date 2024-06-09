@@ -1,0 +1,10 @@
+- name: loops in ansible
+  hosts: nginx
+  tasks:
+  - name: installing nginx and postfix
+    ansible.builtin.yum:
+      name: 
+      state: installed
+    loops:
+    - nginx
+    - ansible  
