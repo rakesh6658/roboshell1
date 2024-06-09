@@ -3,7 +3,9 @@
   vars:
     name1: devops
   tasks:
+  - name: checking user
+    ansible.builtin.command: id roboshop
+      register: output
   - name: validating
     ansible.builtin.debug:
-      msg: hello {{name1}}
-    when: name1 == "devops"  
+      msg: "output" 
