@@ -1,5 +1,11 @@
 - name: 6 types of vars
   hosts: nginx
+  vars_prompt:
+
+    - name: name
+      prompt: What is your username?
+      private: false
+
   vars:
     name: play-vars-rakesh
     house: gotlur
