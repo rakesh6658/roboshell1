@@ -9,8 +9,8 @@
   vars:
     name1: play-vars-rakesh
     house: gotlur
-  vars_files:
-    - variables.yaml  
+  # vars_files:
+  #   - variables.yaml  
   tasks:
   - name: printing the vars
     # vars:
@@ -20,4 +20,5 @@
       msg: "welcome to {{name1}},he lives in {{house}} and he knows {{name1}} "  
 #1. command line
 #2.task level
+#3.vars_files
 
