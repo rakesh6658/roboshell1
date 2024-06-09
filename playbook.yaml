@@ -1,6 +1,6 @@
 - name: print message
   hosts: localhost
   tasks:
-  - name: print message
-    ansible.builtin.debug
-      msg: "welcome to hyd"
+  - name: Print the message
+    ansible.builtin.debug:
+      msg: "welcome to ansible"
