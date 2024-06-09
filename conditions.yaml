@@ -1,9 +1,9 @@
 - name: conditions in yaml
   hosts: localhost
   vars:
-    name: devops
+    name1: devops
   tasks:
   - name: validating
     ansible.builtin.debug:
       msg: hello {{name}}
-    when: name = "devops"  
+    when: name1 = "devops"  
