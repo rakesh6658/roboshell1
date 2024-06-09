@@ -6,4 +6,4 @@
   - name: validating
     ansible.builtin.debug:
       msg: hello {{name}}
-    when: name1 = "devops"  
+    when: name1 == "devops"  
