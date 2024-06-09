@@ -1,0 +1,18 @@
+- name: checking directory exits or not
+  hosts: localhost
+  become: yes
+  tasks:
+  - name: checking directory exists or not
+    ansible.builtin.stat:
+      path: "/home/centos/roboshell1/mouli"
+    register: output
+  - name: directory exists
+    ansible.builtin.debug:
+      msg: "mouli directory exists"
+    when: output.stat.exists
+  - name: directory exists
+    ansible.builtin.debug:
+      msg: "mouli directory not exists"
+    when: not output.stat.exists  
+
+     
