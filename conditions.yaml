@@ -1,0 +1,9 @@
+- name: conditions in yaml
+  hosts: localhost
+  vars:
+    name: devops
+  tasks:
+  - name: validating
+    ansible.builtin.debug:
+      msg: hello {{name}}
+    when: name = "devops"  
