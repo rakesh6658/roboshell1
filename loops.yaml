@@ -1,5 +1,6 @@
 - name: loops in ansible
   hosts: nginx
+  become: yes
   tasks:
   - name: installing nginx and postfix
     ansible.builtin.yum:
