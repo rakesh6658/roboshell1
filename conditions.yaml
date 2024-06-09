@@ -7,8 +7,9 @@
     ignore_errors: True
   - name: validating
     ansible.builtin.debug:
-      msg: output 
+      msg: output.rc 
   - name: creating user roboshop
+    become: yes
     ansible.builtin.user:
       name: roboshop
     when: output.rc != 0    
