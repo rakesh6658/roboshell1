@@ -5,7 +5,7 @@
   tasks:
   - name: checking user
     ansible.builtin.command: id roboshop
-      register: output
+    register: output
   - name: validating
     ansible.builtin.debug:
       msg: "output" 
