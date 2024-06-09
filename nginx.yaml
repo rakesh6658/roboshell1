@@ -1,5 +1,6 @@
 - name: installing nginx i node1
   hosts: nginx
+  become: yes
   tasks:
   - name: install nginx
     ansible.builtin.yum:
