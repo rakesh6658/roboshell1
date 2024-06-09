@@ -1,10 +1,10 @@
 - name: 6 types of vars
   hosts: nginx
-  vars_prompt:
+  # vars_prompt:
 
-    - name: name1
-      prompt: What is your username?
-      private: true
+  #   - name: name1
+  #     prompt: What is your username?
+  #     private: true
 
   vars:
     name1: play-vars-rakesh
@@ -21,4 +21,5 @@
 #1. command line
 #2.task level
 #3.vars_files
+#4.prompt
 
