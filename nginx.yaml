@@ -1,0 +1,11 @@
+- name: installing nginx i node1
+  hosts: nginx
+  tasks:
+  - name: install nginx
+    ansible.builtin.yum:
+      name: nginx
+      state: installed
+  - name: starting nginx
+    ansible.builtin.service:
+      name: nginx
+      state: started
