@@ -12,7 +12,7 @@
     when: output.stat.exists
   - name: directory exists
     ansible.builtin.command: mkdir mouli
-      msg: "mouli directory not exists"
+    register: rakesh
     when: not output.stat.exists  
 
      
