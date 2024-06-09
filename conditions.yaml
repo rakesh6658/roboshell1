@@ -5,5 +5,5 @@
   tasks:
   - name: validating
     ansible.builtin.debug:
-      msg: hello {{name}}
+      msg: hello {{name1}}
     when: name1 == "devops"  
