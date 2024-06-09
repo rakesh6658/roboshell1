@@ -3,8 +3,8 @@
   tasks:
   - name: installing nginx and postfix
     ansible.builtin.yum:
-      name: 
+      name: "{{ item }}"
       state: installed
-    loops:
+    loop:
     - nginx
     - ansible  
