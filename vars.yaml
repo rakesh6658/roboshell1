@@ -1,13 +1,15 @@
 - name: 6 types of vars
   hosts: nginx
   vars:
-    name: rakesh
+    name: play-vars-rakesh
     house: gotlur
+  vars_files:
+    - variables.yaml  
   tasks:
   - name: printing the vars
     vars:
-      name: dubbu
+      name: task-vars-dubbu
       house: sweden
     ansible.builtin.debug:
-      msg: "welcome to {{name}},he lives in {{house}} and he knows {{COURSE}}"  
+      msg: "welcome to {{name}},he lives in {{house}} and he knows {{name}}"  
 
