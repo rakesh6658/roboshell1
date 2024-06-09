@@ -1,7 +1,5 @@
 - name: conditions in yaml
   hosts: localhost
-  vars:
-    name1: devops
   tasks:
   - name: checking user
     ansible.builtin.command: id roboshop
