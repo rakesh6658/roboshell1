@@ -2,7 +2,7 @@
   hosts: nginx
   vars_prompt:
 
-    - name: name
+    - name: name1
       prompt: What is your username?
       private: true
 
@@ -17,5 +17,5 @@
       name: task-vars-dubbu
       house: sweden
     ansible.builtin.debug:
-      msg: "welcome to {{name}},he lives in {{house}} and he knows {{name}}"  
+      msg: "welcome to {{name}},he lives in {{house}} and he knows {{name}} {{name1}}"  
 
