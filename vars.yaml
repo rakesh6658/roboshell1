@@ -6,5 +6,5 @@
   tasks:
   - name: printing the vars
     ansible.builtin.debug:
-      msg: "welcome to {{name}},he lives in {{house}}"  
+      msg: "welcome to {{name}},he lives in {{house}} and he knows {{COURSE}}"  
 
