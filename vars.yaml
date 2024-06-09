@@ -13,9 +13,11 @@
     - variables.yaml  
   tasks:
   - name: printing the vars
-    vars:
-      name1: task-vars-dubbu
-      house: sweden
+    # vars:
+    #   name1: task-vars-dubbu
+    #   house: sweden
     ansible.builtin.debug:
       msg: "welcome to {{name1}},he lives in {{house}} and he knows {{name1}} "  
+#1. command line
+#2.task level
 
