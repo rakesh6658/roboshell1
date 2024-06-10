@@ -13,10 +13,8 @@ echo "creating instance $i"
 private_ip=$( aws ec2 run-instances  --image-id $imageid  --instance-type $instance_type  --security-group-ids $security_groupid  | jq -r '.Instances[0].PrivateIpAddress')
 
 
-aws route53 change-resource-record-sets --hosted-zone-id Z01861853FDUCS1FFDRY1 --change-batch 
+aws route53 change-resource-record-sets --hosted-zone-id Z01861853FDUCS1FFDRY1 --change-batch
 {
-    "Comment": "Update record to add new CNAME record",
-    "Changes": 
     [
         {
             "Action": "CREATE",
