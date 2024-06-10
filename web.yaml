@@ -6,12 +6,6 @@
     ansible.builtin.yum:
       name: nginx
       state: installed
-  - name: Start service nginx, if not started
-    ansible.builtin.service:
-      name: nginx
-      enabled: yes
-      state: started
-      
   - name: Delete content & directory
     ansible.builtin.file:
       state: absent
@@ -39,9 +33,10 @@
     ansible.builtin.copy:
       src: roboshop.conf
       dest: /etc/nginx/default.d/roboshop.conf   
-  - name: restart nginx
+  - name: Start service nginx, if not started
     ansible.builtin.service:
       name: nginx
-      state: started     
+      enabled: yes
+      state: started 
 
 
