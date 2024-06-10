@@ -29,6 +29,20 @@
       path: /app
       state: directory
     when: output.stat.exists == false  
+  - name: Downloading catalogue
+    ansible.builtin.get_url:
+      url: https://roboshop-builds.s3.amazonaws.com/catalogue.zip
+      dest: /tmp
+  - name: Unarchive a file that is already on the remote machine
+    ansible.builtin.unarchive:
+      src: /tmp/catalogue.zip
+      dest: /app
+      remote_src: yes    
+  - name: download npm
+    ansible.builtin.command: npm install 
+    args:
+      chdir: /app
+
     
   
 
