@@ -25,7 +25,7 @@
     register: output
   - name: printing message output
     ansible.builtin.debug:
-      msg: 'output'
+      msg: "{{output}}"
   
 
 
