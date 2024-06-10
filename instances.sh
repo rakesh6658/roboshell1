@@ -10,25 +10,18 @@ else
 instance_type=t2.micro
 fi
 echo "creating instance $i"
-private_ip=$( aws ec2 run-instances  --image-id $imageid  --instance-type $instance_type  --security-group-ids $security_groupid  | jq -r '.Instances[0].PrivateIpAddress')
+private_ip=$( aws ec2 run-instances  --image-id $imageid  --instance-type $instance_type  --security-group-ids $security_groupid --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" | jq -r '.Instances[0].PrivateIpAddress')
 
 
-aws route53 change-resource-record-sets --hosted-zone-id Z01861853FDUCS1FFDRY1 --change-batch
+aws route53 change-resource-record-sets --hosted-zone-id Z01861853FDUCS1FFDRY1 --change-batch'
 {
-    [
-        {
+            "Changes": [{
             "Action": "CREATE",
-            "ResourceRecordSet": {
-                "Name": "$i.rakeshreddy.online",
-                "Type": "A",
-                "TTL": "300",
-                "ResourceRecords": [
-                    {
-                       "Key": "$i", "Value": "$private_ip"
-                    }
-                ]
-            }
-        }
-    ]
-}
+                        "ResourceRecordSet": {
+                            "Name": "'$i.rakeshreddy.online'",
+                            "Type": "A",
+                            "TTL": 300,
+                            "ResourceRecords": [{ "Value": "'$private_ip'"}]
+                        }}]
+}'
 done
