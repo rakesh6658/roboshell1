@@ -18,4 +18,16 @@
   - name: creating user roboshop
     ansible.builtin.user:
       name: roboshop
-    when: output.rc != 0        
+    when: output.rc != 0  
+  - name: checking directory exists or not
+    ansible.builtin.stat:
+      path: /app
+    register: output
+  - name: printing message output
+    ansible.builtin.debug:
+      msg: 'output'
+  
+
+
+
+
