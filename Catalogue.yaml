@@ -1,0 +1,22 @@
+- name: creating mongodb
+  hosts: catalogue
+  become: yes
+  tasks:
+  - name: setting up nodejs repos.
+    ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+  - name: installing node js
+    ansible.builtin.yum:
+      name: nodejs
+      state: installed
+  - name: checking user
+    ansible.builtin.command: id roboshop
+    register: output
+    ignore_errors: True
+  - name: validating
+    ansible.builtin.debug:
+      msg: output.rc 
+  - name: creating user roboshop
+    become: yes
+    ansible.builtin.user:
+      name: roboshop
+    when: output.rc != 0        
