@@ -23,10 +23,7 @@
     ansible.builtin.stat:
       path: /app
     register: output
-  - name: printing message output
-    ansible.builtin.debug:
-      msg: "{{output}}"
-     when: output.stat.exists
+  
   - name: Create a directory if it does not exist
     ansible.builtin.file:
       path: /app
