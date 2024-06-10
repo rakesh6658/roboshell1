@@ -9,8 +9,9 @@
   - name: Start service nginx, if not started
     ansible.builtin.service:
       name: nginx
-      state: started
       enabled: yes
+      state: started
+      
   - name: Delete content & directory
     ansible.builtin.file:
       state: absent
