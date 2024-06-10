@@ -12,26 +12,25 @@ fi
 echo "creating instance $i"
 private_ip=$( aws ec2 run-instances  --image-id $imageid  --instance-type $instance_type  --security-group-ids $security_groupid  | jq -r '.Instances[0].PrivateIpAddress')
 
+
+aws route53 change-resource-record-sets --hosted-zone-id Z01861853FDUCS1FFDRY1 --change-batch 
+{
+    "Comment": "Update record to add new CNAME record",
+    "Changes": 
+    [
+        {
+            "Action": "CREATE",
+            "ResourceRecordSet": {
+                "Name": "$i.rakeshreddy.online",
+                "Type": "A",
+                "TTL": "300",
+                "ResourceRecords": [
+                    {
+                       "Key": "$i", "Value": "$private_ip"
+                    }
+                ]
+            }
+        }
+    ]
+}
 done
-# aws route53 change-resource-record-sets --hosted-zone-id Z07861153FFB7P0M0D6G8 --change-batch 
-#"mysql" "rabbitmq" "shipping" "dispatch" "payment"
-# {
-#     "Comment": "Update record to add new CNAME record",
-#     "Changes": 
-#     [
-#         {
-#             "Action": "CREATE",
-#             "ResourceRecordSet": {
-#                 "Name": "${modules[@]}.rakeshreddy.online",
-#                 "Type": "A",
-#                 "TTL": "300",
-#                 "ResourceRecords": [
-#                     {
-#                         "Value": "$private_ip"
-#                     }
-#                 ]
-#             }
-#         }
-#     ]
-# }
-# done
