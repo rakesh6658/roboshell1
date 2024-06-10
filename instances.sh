@@ -2,7 +2,7 @@ imageid=ami-0b4f379183e5706b9
 instance_type=""
 security_groupid=sg-0ba387cf504f1383b
 DOMAIN_NAME=rakeshreddy.online
-HOSTED_ZONE_ID=01861853FDUCS1FFDRY1
+HOSTED_ZONE_ID=Z01861853FDUCS1FFDRY1
 for i in $@
 do
 if ((i=="mongodb" || i=="mysql"))
