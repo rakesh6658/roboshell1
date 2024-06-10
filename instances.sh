@@ -1,4 +1,4 @@
-imageid=ami-0f3c7d07486cad139
+imageid=ami-0b4f379183e5706b9
 instance_type=""
 security_groupid=sg-0ba387cf504f1383b
 for i in $@
