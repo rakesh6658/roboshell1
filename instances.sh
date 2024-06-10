@@ -9,7 +9,7 @@ instance_type=t3.micro
 else
 instance_type=t2.micro
 fi
-creating instance $i
+echo "creating instance $i"
 private_ip=$( aws ec2 run-instances  --image-id $imageid  --instance-type $instance_type  --security-group-ids $security_groupid --subnet-id $subnetid | jq -r '.Instances[0].PrivateIpAddress')
 
 done
