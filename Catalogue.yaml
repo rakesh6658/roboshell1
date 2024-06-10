@@ -42,6 +42,30 @@
     ansible.builtin.command: npm install 
     args:
       chdir: /app
+  - name: copying catalogue.service
+    ansible.builtin.copy:
+      src: catalogue.service
+      dest: /etc/systemd/system/catalogue.service  
+  - name: daemon_reload catalogue
+    ansible.builtin.systemd:
+      daemon_reload: true  
+  - name: Start service mongodb, if not started
+    ansible.builtin.service:
+      name: catalogue
+      state: started  
+      enabled: yes  
+  - name: copying mongo.repo
+    ansible.builtin.copy:
+      src: mongo.repo
+      dest: /etc/yum.repos.d/mongo.repo  
+  - name: installing mongodb-org-shell
+    ansible.builtin.yum:
+      name: mongodb-org-shel
+      state: installed    
+  - name: loading schema
+    ansible.builtin.shell: mongo --host mongodb.rakeshreddy.online </app/schema/catalogue.js          
+            
+
 
     
   
