@@ -60,7 +60,7 @@
       dest: /etc/yum.repos.d/mongo.repo  
   - name: installing mongodb-org-shell
     ansible.builtin.yum:
-      name: mongodb-org-shel
+      name: mongodb-org-shell
       state: installed    
   - name: loading schema
     ansible.builtin.shell: mongo --host mongodb.rakeshreddy.online </app/schema/catalogue.js          
