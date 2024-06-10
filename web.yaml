@@ -18,11 +18,11 @@
   - name: checking directory exists or not
     ansible.builtin.stat:
       path: /usr/share/nginx/html 
-    register: "{{output}}"
+    register: output
   
   - name: Create a directory if it does not exist
     ansible.builtin.file:
-      path: /usr/share/nginx
+      path: /usr/share/nginx/html
       state: directory
     when: output.stat.exists == false      
   - name: Downloading frontend content
