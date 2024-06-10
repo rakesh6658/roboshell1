@@ -12,7 +12,7 @@
       state: installed
   - name: Start service mongodb, if not started
     ansible.builtin.service:
-      name: mongodb-org
+      name: mongod
       state: started  
       enabled: yes      
   - name: Updating listen address from 127.0.0.1 to 0.0.0.0 in /etc/mongod.conf
