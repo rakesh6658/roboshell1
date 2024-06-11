@@ -1,5 +1,5 @@
-- name: creating mongodb
-  hosts: user
+- name: creating cart
+  hosts: cart
   become: yes
   tasks:
   - name: setting up nodejs repos.
@@ -29,42 +29,33 @@
       path: /app
       state: directory
     when: output.stat.exists == false  
-  - name: Downloading user
+  - name: Downloading cart
     ansible.builtin.get_url:
-      url: https://roboshop-builds.s3.amazonaws.com/user.zip
+      url: https://roboshop-builds.s3.amazonaws.com/cart.zip
       dest: /tmp
   - name: Unarchive a file that is already on the remote machine
     ansible.builtin.unarchive:
-      src: /tmp/user.zip
+      src: /tmp/cart.zip
       dest: /app
       remote_src: yes    
   - name: download npm
     ansible.builtin.command: npm install 
     args:
       chdir: /app
-  - name: copying user.service
+  - name: copying cart.service
     ansible.builtin.copy:
-      src: user.service
-      dest: /etc/systemd/system/user.service  
-  - name: daemon_reload user
+      src: cart.service
+      dest: /etc/systemd/system/cart.service  
+  - name: daemon_reload cart
     ansible.builtin.systemd:
       daemon_reload: true  
-  - name: Start service user, if not started
+  - name: Start service cart, if not started
     ansible.builtin.service:
-      name: user
+      name: cart
       state: started  
       enabled: yes  
-  - name: copying mongo.repo
-    ansible.builtin.copy:
-      src: mongo.repo
-      dest: /etc/yum.repos.d/mongo.repo  
-  - name: installing mongodb-org-shell
-    ansible.builtin.yum:
-      name: mongodb-org-shell
-      state: installed    
-  - name: loading schema
-    ansible.builtin.shell: mongo --host mongodb.rakeshreddy.online </app/schema/user.js          
-            
+   
+   
 
 
     
