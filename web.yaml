@@ -15,17 +15,14 @@
     ansible.builtin.file:
       state: absent
       path: /usr/share/nginx/html  
-  - name: checking directory exists or not
-    ansible.builtin.stat:
-      path: /usr/share/nginx/html 
-    register: output
   
-  - name: Create a directory if it does not exist
+  
+  - name: Create a directory
     ansible.builtin.file:
       path: /usr/share/nginx/html
       state: directory
-      recurse: yes
-    when: output.stat.exists == false      
+      
+     
   - name: Downloading frontend content
     ansible.builtin.get_url:
       url: https://roboshop-builds.s3.amazonaws.com/web.zip
@@ -33,12 +30,12 @@
   - name: Unarchive a file that is already on the remote machine
     ansible.builtin.unarchive:
       src: /tmp/web.zip
-      dest: /usr/share/nginx/html/
+      dest: /usr/share/nginx/html
       remote_src: yes   
   - name: copying roboshop.conf
     ansible.builtin.copy:
       src: roboshop.conf
-      dest: /etc/nginx/default.d/ 
+      dest: /etc/nginx/default.d/roboshop.conf
   - name: Restart service nginx, in all cases
     ansible.builtin.service:
       name: nginx
