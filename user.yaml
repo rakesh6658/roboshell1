@@ -1,0 +1,75 @@
+- name: creating mongodb
+  hosts: user
+  become: yes
+  tasks:
+  - name: setting up nodejs repos.
+    ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+  - name: installing node js
+    ansible.builtin.yum:
+      name: nodejs
+      state: installed
+  - name: checking user
+    ansible.builtin.command: id roboshop
+    register: output
+    ignore_errors: True
+  - name: validating
+    ansible.builtin.debug:
+      msg: output.rc 
+  - name: creating user roboshop
+    ansible.builtin.user:
+      name: roboshop
+    when: output.rc != 0  
+  - name: checking directory exists or not
+    ansible.builtin.stat:
+      path: /app
+    register: output
+  
+  - name: Create a directory if it does not exist
+    ansible.builtin.file:
+      path: /app
+      state: directory
+    when: output.stat.exists == false  
+  - name: Downloading user
+    ansible.builtin.get_url:
+      url: https://roboshop-builds.s3.amazonaws.com/user.zip
+      dest: /tmp
+  - name: Unarchive a file that is already on the remote machine
+    ansible.builtin.unarchive:
+      src: /tmp/user.zip
+      dest: /app
+      remote_src: yes    
+  - name: download npm
+    ansible.builtin.command: npm install 
+    args:
+      chdir: /app
+  - name: copying user.service
+    ansible.builtin.copy:
+      src: user.service
+      dest: /etc/systemd/system/user.service  
+  - name: daemon_reload user
+    ansible.builtin.systemd:
+      daemon_reload: true  
+  - name: Start service mongodb, if not started
+    ansible.builtin.service:
+      name: user
+      state: started  
+      enabled: yes  
+  - name: copying mongo.repo
+    ansible.builtin.copy:
+      src: mongo.repo
+      dest: /etc/yum.repos.d/mongo.repo  
+  - name: installing mongodb-org-shell
+    ansible.builtin.yum:
+      name: mongodb-org-shell
+      state: installed    
+  - name: loading schema
+    ansible.builtin.shell: mongo --host mongodb.rakeshreddy.online </app/schema/user.js          
+            
+
+
+    
+  
+
+
+
+
