@@ -13,3 +13,7 @@ redis.rakeshreddy.online
 user.rakeshreddy.online
 [mysql]
 mysql.rakeshreddy.online
+[shipping]
+shipping.rakeshreddy.online
+[rabbitmq]
+rabbitmq.rakeshreddy.online
