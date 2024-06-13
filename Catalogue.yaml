@@ -12,9 +12,9 @@
     ansible.builtin.command: id roboshop
     register: output
     ignore_errors: True
-  - name: validating
+  - name: printing message
     ansible.builtin.debug:
-      msg: {{output.rc}} 
+      msg: "{{output.rc}}" 
   - name: creating user roboshop
     ansible.builtin.user:
       name: roboshop
