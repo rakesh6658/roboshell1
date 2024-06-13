@@ -53,6 +53,7 @@
       daemon_reload: true  
   - name: Start service payment, if not started
     ansible.builtin.service:
+      become: yes
       name: payment
       state: started  
       enabled: yes           
