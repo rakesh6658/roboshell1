@@ -37,9 +37,14 @@
       dest: /app
       remote_src: yes    
   - name: download npm
-    ansible.builtin.command: go mod init dispatch get build 
+    ansible.builtin.command: "{{ item }}"
     args:
       chdir: /app
+    loop:
+    - go mod init dispatch
+    - go get 
+    - go build
+
   - name: copying dispatch.service
     ansible.builtin.copy:
       src: dispatch.service
