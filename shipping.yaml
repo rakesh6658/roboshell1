@@ -36,5 +36,25 @@
     ansible.builtin.unarchive:
       src: /tmp/shipping.zip
       dest: /app
-      remote_src: yes      
+      remote_src: yes  
+  - name: download npm
+    ansible.builtin.command: mvn clean package
+    args:
+      chdir: /app  
+  - name: moving shipping.jar
+    ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar
+  - name: copying shipping.service
+    ansible.builtin.copy:
+      src: shipping.service
+      dest: /etc/systemd/system/shipping.service  
+  - name: daemon_reload shipping
+    ansible.builtin.systemd:
+      daemon_reload: true  
+  - name: Start service mongodb, if not started
+    ansible.builtin.service:
+      name: shipping
+      state: started  
+      enabled: yes    
+
+
         
