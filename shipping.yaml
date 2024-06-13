@@ -43,6 +43,8 @@
       chdir: /app  
   - name: moving shipping.jar
     ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar
+    args:
+      chdir: /app
   - name: copying shipping.service
     ansible.builtin.copy:
       src: shipping.service
@@ -50,11 +52,21 @@
   - name: daemon_reload shipping
     ansible.builtin.systemd:
       daemon_reload: true  
-  - name: Start service mongodb, if not started
+  - name: Start service shipping, if not started
     ansible.builtin.service:
       name: shipping
       state: started  
       enabled: yes    
+  - name: installing mysql
+    ansible.builtin.yum:
+      name: mysql
+      state: installed 
+  - name: loading schema
+    ansible.builtin.shell: mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pRoboShop@1 < /app/schema/shipping.sql 
+  - name: restart shipping
+    ansible.builtin.service:
+      name: shipping
+      state: restarted          
 
 
         
