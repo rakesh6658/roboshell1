@@ -21,7 +21,6 @@
     ansible.builtin.stat:
       path: /app
     register: output
-  
   - name: Create a directory if it does not exist
     ansible.builtin.file:
       path: /app
@@ -47,7 +46,7 @@
   - name: daemon_reload shipping
     ansible.builtin.systemd:
       daemon_reload: true  
-  - name: Start service mongodb, if not started
+  - name: Start service shipping, if not started
     ansible.builtin.service:
       name: shipping
       state: started  
