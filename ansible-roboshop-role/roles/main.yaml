@@ -1,5 +1,5 @@
 - name: executing main.yaml
   hosts: "{{ component }}"
   become: yes
-  role:
+  roles:
     - "{{ component }}"
